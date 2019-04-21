@@ -1,0 +1,60 @@
+﻿@model IEnumerable<WebApplication1.Expenditure>
+
+@{
+    ViewBag.Title = "Danh sách chi tiêu";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Danh sách chi tiêu</h2>
+
+<p>
+    @Html.ActionLink("Tạo mới", "Create")
+</p>
+
+<table id="myTable" class="table ">
+    <thead>
+        <tr>
+            <th>
+                Ngày
+            </th>
+            <th>
+                Số tiền
+            </th>
+            <th>
+                Ghi chú
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+
+        @foreach (var item in Model)
+        {
+            <tbody>
+            <tr>
+                <td>
+                    @item.Date.ToString("dd/MM/yyyy")
+                </td>
+                <td>
+                    @item.Amount.ToString("N0")
+                </td>
+                <td>
+                    @item.Note
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit", "Expenditure", new { id = item.ID})">Sửa</a>
+                </td>
+            </tr>
+    </tbody>
+        }
+
+</table>
+
+@section Scripts{
+    <link href="//cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet">
+    <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#myTable').DataTable();
+        });
+    </script>
+}
