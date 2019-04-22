@@ -8,7 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 
-Quoc cuongddddd
+Quoc cuong
 namespace WebApplication1.Controllers
 {
     public class ExpenditureController : Controller
