@@ -14,7 +14,7 @@ namespace WebApplication1.Tests.Controllers
         [TestMethod]
         public void TestIndex()
         {
-            var db = new ExpendituresEntities();
+            var db = new Entities();
             var controller = new ExpenditureController();
 
             var result = controller.Index() as ViewResult;
@@ -22,7 +22,7 @@ namespace WebApplication1.Tests.Controllers
             Assert.IsNotNull(result);
             var model = result.Model as List<Expenditure>;
             Assert.IsInstanceOfType(result.Model, typeof(List<Expenditure>));
-            Assert.AreEqual(db.Expenditures.Count(), (result.Model as List<Expenditure>).Count);
+            Assert.AreEqual(db.Expenditure.Count(), (result.Model as List<Expenditure>).Count);
 
 
         }
@@ -42,8 +42,8 @@ namespace WebApplication1.Tests.Controllers
             var result0 = controller.Edit(0);
             Assert.IsInstanceOfType(result0, typeof(HttpNotFoundResult));
 
-            var db = new ExpendituresEntities();
-            var item = db.Expenditures.First();
+            var db = new Entities();
+            var item = db.Expenditure.First();
             var result1 = controller.Edit(item.ID) as ViewResult;
             Assert.IsNotNull(result1);
             var model = result1.Model as Expenditure;

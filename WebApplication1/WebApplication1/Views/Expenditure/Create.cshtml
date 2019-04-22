@@ -1,4 +1,4 @@
-﻿@model WebApplication1.Expenditure
+﻿@model WebApplication1.Models.Expenditure
 
 @{
     ViewBag.Title = "Create";
@@ -16,7 +16,7 @@
         @Html.ValidationSummary(true)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Amount, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Amount,"So tien", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Amount)
                 @Html.ValidationMessageFor(model => model.Amount)
@@ -24,7 +24,7 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Note, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Note,"Ghi chu", new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Note)
                 @Html.ValidationMessageFor(model => model.Note)

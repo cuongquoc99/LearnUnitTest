@@ -8,16 +8,17 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication1.Models;
 
+Quoc cuong
 namespace WebApplication1.Controllers
 {
     public class ExpenditureController : Controller
     {
-        private ExpendituresEntities db = new ExpendituresEntities();
+        private Entities db = new Entities();
 
         // GET: /Expenditure/
         public ActionResult Index()
         {
-            var model = db.Expenditures.ToList();
+            var model = db.Expenditure.ToList();
             return View(model);
         }
 
@@ -28,7 +29,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Expenditure expenditure = db.Expenditures.Find(id);
+            Expenditure expenditure = db.Expenditure.Find(id);
             if (expenditure == null)
             {
                 return HttpNotFound();
@@ -52,13 +53,13 @@ namespace WebApplication1.Controllers
             ValidateExpenditure(model);
             if (ModelState.IsValid)
             {
-                model.Date = DateTime.Now;
-                db.Expenditures.Add(model);
+                model.Date = DateTime.Today;
+                db.Expenditure.Add(model);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(model);
+            return View("Create",model);
         }
 
         private void ValidateExpenditure(Expenditure model)
@@ -69,7 +70,7 @@ namespace WebApplication1.Controllers
         // GET: /Expenditure/Edit/5
         public ActionResult Edit(int id)
         {
-            var model = db.Expenditures.Find(id);
+            var model = db.Expenditure.Find(id);
             if (model == null)
             {
                 return HttpNotFound();
@@ -101,7 +102,7 @@ namespace WebApplication1.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Expenditure expenditure = db.Expenditures.Find(id);
+            Expenditure expenditure = db.Expenditure.Find(id);
             if (expenditure == null)
             {
                 return HttpNotFound();
@@ -114,8 +115,8 @@ namespace WebApplication1.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Expenditure expenditure = db.Expenditures.Find(id);
-            db.Expenditures.Remove(expenditure);
+            Expenditure expenditure = db.Expenditure.Find(id);
+            db.Expenditure.Remove(expenditure);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

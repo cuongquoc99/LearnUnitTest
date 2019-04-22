@@ -7,16 +7,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication1
+namespace WebApplication1.Models
 {
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class ExpendituresEntities : DbContext
+    public partial class Entities : DbContext
     {
-        public ExpendituresEntities()
-            : base("name=ExpendituresEntities")
+        public Entities()
+            : base("name=Entities")
         {
         }
     
@@ -25,6 +25,6 @@ namespace WebApplication1
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<Expenditure> Expenditures { get; set; }
+        public virtual DbSet<Expenditure> Expenditure { get; set; }
     }
 }
